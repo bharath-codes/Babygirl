@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #e91e63;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #c2185b;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #f48fb1;
+            padding-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .heart {
+            color: #e74c3c;
+            font-size: 1.5em;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 50%, 100% { transform: scale(1); }
+            25%, 75% { transform: scale(1.1); }
+        }
+
+        .care-notes {
+            background: linear-gradient(45deg, #fce4ec, #f8bbd9);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #e91e63;
+        }
+
+        .care-notes h3 {
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .care-notes ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .care-notes li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .care-notes li:before {
+            content: "💜";
+            position: absolute;
+            left: 0;
+        }
+
+        .forgive-section {
+            text-align: center;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 40px;
+            margin: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .yes-btn {
+            background: linear-gradient(45deg, #ff69b4, #ffc0cb);
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ff1493, #ffb6c1);
+        }
+
+        .no-btn {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+        }
+
+        .no-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ee5a52, #feb941);
+        }
+
+        .response-message {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.3em;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .thank-you {
+            background: linear-gradient(45deg, #fce4ec, #f8bbd9);
+            color: #c2185b;
+            border: 3px solid #e91e63;
+        }
+
+        .please-message {
+            background: linear-gradient(45deg, #ffcdd2, #f8bbd9);
+            color: #c2185b;
+            border: 3px solid #e91e63;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(231, 76, 60, 0.3);
+            font-size: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 25px;
+                margin: 20px 0;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .button {
+                display: block;
+                margin: 15px auto;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <div class="container">
+        <div class="section">
+            <h1>My Dearest Love <span class="heart">❤️</span></h1>
+        </div>
+
+        <div class="section">
+            <h2>I'm So Sorry,</h2>
+            <p>My beautiful girl, Bangaram,
+
+I know I messed up, baby. I’m truly, deeply sorry for the things I said, thalli. I didn’t mean to hurt you, not even for a second. I let my emotions take control, and I handled everything the wrong way.
+
+You’re already carrying so much, and instead of making things easier, I became another weight on your heart. That kills me, baby. I should’ve been your safe place… your peace.
+
+Can we please leave all this behind kadha? I don’t want to hold onto this fight or these mistakes. I just want us back. I miss us, our talks, our laughter, our love. I miss you so much.
+
+I promise, I’ll be better. I’ll learn, I’ll grow, I’ll do whatever it takes to become the person you need and deserve. Not just when it’s easy, but especially in times like this, when love really matters the most.
+
+I’m not giving up on us… not now, not ever. You’re too important to me. I'll always by your side baby. And I know I’ve got a lot to work on, but I’m willing to give it my all. For you. For us.
+
+If you let me, I’ll show you every single day that real love doesn’t fade when things get hard, it stands up, stays soft, and fights through. And that’s what I want to do. Hold your heart gently, protect it, and never be the reason it breaks again.
+
+I love you endlessly, thalli. I’m sorry, with everything I have inside me. Come back to me, baby. Let’s heal this together.
+
+Forever yours,
+Your boy.
+        </div>
+
+        <div class="section">
+            <h2>Taking Care of You 🌸</h2>
+            <p>I know you're going through your period right now, and I want you to know that I see you and I care about everything you're experiencing.</p>
+            
+            <div class="care-notes">
+                <h3>Sweet Reminders for My Girl:</h3>
+                <ul>
+                    <li>You're incredibly strong, even when you don't feel like it</li>
+                    <li>Your feelings are completely valid, all of them</li>
+                    <li>You deserve all the comfort, warmth, and gentleness in the world</li>
+                    <li>It's okay to rest, to feel moody, to need extra love</li>
+                    <li>You're beautiful in every moment, even the difficult ones</li>
+                    <li>I'm here for you through all of it - the cramps, the emotions, everything</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Wishing I Was There </h2>
+            <p>Right now, I wish I could be there to hold you close, to rub your back when the cramps hit, to bring you your favorite comfort food, and to just be your safe space.</p>
+            <p>I wish I could make you coffee or tea, put on your favorite movie, and let you curl up against me while I tell you how much you mean to me.</p>
+            <p>I wish I could kiss your forehead and remind you every minute that you're loved, cherished, and absolutely perfect just as you are.</p>
+            <p>Even though I can't be there physically right now, please know that my heart is with you. You're in my thoughts every moment.</p>
+        </div>
+
+        <div class="section">
+            <h2>You Are Everything to Me ✨</h2>
+            <p>Beautiful girl, I need you to know that you are my heart, my home, my everything. You make my world brighter just by being in it.</p>
+            <p>I promise to do better. I promise to think before I speak, to support you better, and to never let my emotions hurt the person I love most.</p>
+            <p>You deserve to be treated like the queen you are, and I want to spend every day proving that I can be the man worthy of your love.</p>
+        </div>
+
+        <div class="section forgive-section">
+            <h2>Will You Forgive Me? 🙏</h2>
+            <p>I know I hurt you, and I know sorry isn't enough on its own. But I'm asking for your forgiveness and the chance to make things right.</p>
+            
+            <button class="button yes-btn" onclick="showResponse('yes')">Yes❤️</button>
+            <button class="button no-btn" onclick="showResponse('no')">No</button>
+            
+            <div id="yes-response" class="response-message thank-you">
+                <h3>Thank You, My Love!</h3>
+                
+                <p><strong>I LOVE YOU SO MUCH! ❤️❤️❤️</strong></p>
+            </div>
+            
+            <div id="no-response" class="response-message please-message">
+                <h3>Sorry.....Please :(</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showResponse(choice) {
+            const yesResponse = document.getElementById('yes-response');
+            const noResponse = document.getElementById('no-response');
+            
+            if (choice === 'yes') {
+                yesResponse.style.display = 'block';
+                noResponse.style.display = 'none';
+                createHearts();
+            } else {
+                noResponse.style.display = 'block';
+                yesResponse.style.display = 'none';
+            }
+        }
+
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 6000);
+                }, i * 200);
+            }
+        }
+
+        // Add some floating hearts on page load
+        window.addEventListener('load', () => {
+            setTimeout(createHearts, 1000);
+        });
+    </script>
+</body>
+</html>
